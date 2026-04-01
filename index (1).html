@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Charith Nukala — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#06070f;
+  --bg2:#090b18;
+  --bg3:#0d1024;
+  --card:#0f1228;
+  --card2:#131629;
+  --border:#1c2040;
+  --border2:#252850;
+  --bg:#f7f8fc;
+  --bg2:#f0f2f7;
+  --bg3:#e8eaf1;
+  --card:#ffffff;
+  --card2:#f7f8fc;
+  --border:#e0e2ec;
+  --border2:#c8cad8;
+  --blue:#5a5c70;
+  --blue2:#3a3c50;
+  --cyan:#6a6c80;
+  --violet:#5a5c70;
+  --amber:#0a0b18;
+  --green:#3a9e6a;
+  --text:#0a0b18;
+  --text2:#4a4c60;
+  --text3:#9a9cac;
+  --grad:linear-gradient(135deg,#0a0b18,#3a3c58);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 2rem;transition:all .3s}
+nav.scrolled{background:rgba(247,248,252,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1140px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1rem;color:var(--text);text-decoration:none;letter-spacing:.04em}
+.nav-logo span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--cyan);transform:scaleX(0);transition:transform .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-btns{display:flex;gap:.75rem;align-items:center}
+.btn-resume{display:flex;align-items:center;gap:.4rem;background:transparent;color:var(--cyan);border:1px solid var(--cyan);padding:.4rem 1rem;border-radius:6px;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.btn-resume:hover{background:var(--cyan);color:#000}
+.btn-resume svg{width:13px;height:13px}
+
+/* HERO */
+#home{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:68px}
+.hero-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");opacity:.4}
+.hero-glow1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(100,100,140,.07) 0%,transparent 70%);top:-100px;left:-100px;pointer-events:none}
+.hero-glow2{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(100,100,140,.05) 0%,transparent 70%);bottom:-50px;right:0;pointer-events:none}
+.dot-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(100,100,140,.25) 1px,transparent 1px);background-size:36px 36px;opacity:.6}
+
+.hero-inner{max-width:1140px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 440px;gap:5rem;align-items:center;position:relative;z-index:1}
+
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(10,11,24,.05);border:1px solid rgba(10,11,24,.12);border-radius:100px;padding:.35rem 1rem .35rem .5rem;margin-bottom:1.5rem}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.badge-text{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text2)}
+
+.hero-name{font-family:'Unbounded',sans-serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;margin-bottom:1.2rem}
+.hero-name .line1{display:block;color:var(--text)}
+.hero-name .line2{display:block;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.hero-desc{font-size:1.1rem;color:var(--text2);line-height:1.8;margin-bottom:2rem;font-weight:300;max-width:500px}
+.hero-desc strong{color:var(--text);font-weight:600}
+
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.hero-pill{font-family:'DM Mono',monospace;font-size:.68rem;padding:.3rem .8rem;border-radius:4px;border:1px solid var(--border2);color:var(--text3);background:var(--card);letter-spacing:.04em;transition:all .2s}
+.hero-pill:hover{border-color:var(--blue2);color:var(--blue2)}
+
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-grad{background:var(--grad);color:#fff;padding:.85rem 2rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:.02em;transition:opacity .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-grad:hover{opacity:.85}
+.btn-ghost{border:1px solid var(--border2);color:var(--text2);padding:.85rem 2rem;border-radius:10px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan)}
+.btn-ghost svg,.btn-grad svg{width:16px;height:16px;flex-shrink:0}
+
+/* STAT PANEL */
+.stat-panel{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;position:relative}
+.stat-panel::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(100,100,140,.03),rgba(100,100,140,.03));pointer-events:none}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.stat-box{background:var(--card);padding:1.75rem 1.5rem;text-align:center;position:relative}
+.stat-box.wide{grid-column:span 2;background:var(--bg3)}
+.stat-num{font-family:'Unbounded',sans-serif;font-size:2.4rem;font-weight:900;line-height:1;margin-bottom:.4rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-box.wide .stat-num{font-size:3rem}
+.stat-label{font-size:.68rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.stat-sub{font-size:.8rem;color:var(--text2);margin-top:.3rem}
+.stat-panel-footer{padding:1.25rem 1.5rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--text3)}
+.stat-panel-footer span{color:var(--green);font-weight:600}
+
+/* SECTIONS */
+section{padding:7rem 2rem}
+.container{max-width:1140px;margin:0 auto}
+.sec-eyebrow{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;display:flex;align-items:center;gap:.6rem}
+.sec-eyebrow::before{content:'//';color:var(--border2)}
+h2.sec-title{font-family:'Unbounded',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:3.5rem}
+h2.sec-title em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-layout{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start}
+.about-body p{color:var(--text2);font-size:1.05rem;line-height:1.85;margin-bottom:1.3rem;font-weight:300}
+.about-body p strong{color:var(--text);font-weight:600}
+.about-body p .metric{color:var(--amber);font-weight:700;font-family:'DM Mono',monospace}
+.about-cards{display:flex;flex-direction:column;gap:1rem}
+.acard{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.4rem;display:grid;grid-template-columns:44px 1fr;gap:1rem;align-items:start;transition:border-color .2s}
+.acard:hover{border-color:var(--border2)}
+.acard-icon{width:44px;height:44px;border-radius:10px;background:rgba(10,11,24,.05);border:1px solid rgba(10,11,24,.1);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.acard-title{font-weight:700;font-size:.88rem;color:var(--text);margin-bottom:.2rem}
+.acard-desc{font-size:.78rem;color:var(--text2);line-height:1.5}
+
+/* RESUME BANNER */
+.resume-banner{background:var(--grad);border-radius:16px;padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;margin-bottom:4rem;gap:1rem;flex-wrap:wrap}
+.resume-banner-text h3{font-family:'Unbounded',sans-serif;font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:.3rem}
+.resume-banner-text p{color:rgba(255,255,255,.75);font-size:.88rem}
+.btn-dl{background:#fff;color:#000;padding:.75rem 1.75rem;border-radius:8px;font-weight:800;font-size:.85rem;letter-spacing:.02em;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;flex-shrink:0}
+.btn-dl:hover{background:var(--text);transform:translateY(-1px)}
+.btn-dl svg{width:16px;height:16px}
+
+/* EXPERIENCE */
+#experience{background:var(--bg)}
+.exp-timeline{display:flex;flex-direction:column;gap:2px}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2.25rem 2.5rem;position:relative;overflow:hidden;transition:border-color .3s}
+.exp-card:hover{border-color:var(--border2)}
+.exp-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--grad)}
+.exp-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem}
+.exp-co{font-family:'Unbounded',sans-serif;font-size:1.05rem;font-weight:800;color:var(--text);letter-spacing:-.01em}
+.exp-role-badge{display:inline-block;background:rgba(10,11,24,.06);border:1px solid rgba(10,11,24,.15);color:var(--blue2);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .7rem;border-radius:5px;margin-top:.4rem}
+.exp-dates{text-align:right}
+.exp-period{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text3);display:block;letter-spacing:.04em}
+.exp-place{font-size:.78rem;color:var(--text3);display:block;margin-top:.3rem}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.7rem}
+.exp-bullets li{color:var(--text2);font-size:.93rem;line-height:1.75;padding-left:1.25rem;position:relative;font-weight:300}
+.exp-bullets li::before{content:'';position:absolute;left:0;top:.7rem;width:5px;height:5px;border-radius:50%;background:var(--cyan);flex-shrink:0}
+.exp-bullets li strong{color:var(--amber);font-weight:700}
+.exp-gap{height:1rem}
+
+/* SKILLS */
+#skills{background:var(--bg2)}
+.skills-wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem}
+.scat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.6rem;transition:border-color .2s}
+.scat:hover{border-color:var(--border2)}
+.scat-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.2rem}
+.scat-icon{width:36px;height:36px;border-radius:8px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.scat-name{font-family:'Unbounded',sans-serif;font-size:.72rem;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:.06em}
+.pills{display:flex;flex-wrap:wrap;gap:.4rem}
+.p{font-family:'DM Mono',monospace;font-size:.68rem;padding:.28rem .65rem;border-radius:5px;background:rgba(10,11,24,.04);border:1px solid var(--border);color:var(--text2);letter-spacing:.03em;transition:all .2s}
+.p:hover{border-color:var(--blue2);color:var(--blue2)}
+.p.star{background:rgba(10,11,24,.06);border-color:rgba(10,11,24,.2);color:var(--blue2)}
+.p.star:hover{background:rgba(10,11,24,.12)}
+
+/* PROJECTS */
+#projects{background:var(--bg)}
+.proj-wrap{display:grid;gap:2rem}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;transition:border-color .3s}
+.pcard:hover{border-color:var(--border2)}
+.pcard-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(100,100,140,.06),transparent 70%);top:-100px;right:-100px;pointer-events:none}
+.pcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem}
+.pcard-name{font-family:'Unbounded',sans-serif;font-size:1.25rem;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1.2}
+.pcard-badge{background:rgba(58,158,106,.1);border:1px solid rgba(58,158,106,.25);color:#2a7a50;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:6px;white-space:nowrap}
+.pcard-stack{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--text3);margin-bottom:1.75rem;letter-spacing:.03em}
+.pcard-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;background:var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.75rem}
+.pm{background:var(--bg3);padding:1rem;text-align:center}
+.pm-num{font-family:'Unbounded',sans-serif;font-size:1.5rem;font-weight:900;color:var(--amber);line-height:1}
+.pm-label{font-size:.65rem;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-top:.3rem}
+.pcard-bullets{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.pcard-bullets li{color:var(--text2);font-size:.9rem;line-height:1.7;padding-left:1.25rem;position:relative;font-weight:300}
+.pcard-bullets li::before{content:'◆';position:absolute;left:0;top:.1rem;color:var(--violet);font-size:.45rem;top:.55rem}
+.pcard-bullets li strong{color:var(--amber);font-weight:700}
+
+/* EDUCATION */
+#education{background:var(--bg2)}
+.edu-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.edu-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:2rem 2.25rem;position:relative;overflow:hidden}
+.edu-card::before{content:'';position:absolute;bottom:0;right:0;width:150px;height:150px;background:radial-gradient(circle,rgba(67,97,238,.08),transparent 70%)}
+.edu-label{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--cyan);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem}
+.edu-deg{font-family:'Unbounded',sans-serif;font-size:1rem;font-weight:800;color:var(--text);line-height:1.25;margin-bottom:.6rem;letter-spacing:-.01em}
+.edu-uni{color:var(--blue2);font-size:.9rem;font-weight:600;margin-bottom:.4rem}
+.edu-info{font-family:'DM Mono',monospace;font-size:.73rem;color:var(--text3);letter-spacing:.04em}
+
+.certs-head{font-family:'Unbounded',sans-serif;font-size:.75rem;font-weight:800;color:var(--text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
+.cert-cards{display:flex;flex-direction:column;gap:.75rem}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:center;gap:.875rem;transition:border-color .2s}
+.cert-card:hover{border-color:var(--border2)}
+.cert-ico{width:36px;height:36px;border-radius:8px;background:rgba(10,11,24,.05);border:1px solid rgba(10,11,24,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.cert-name{font-size:.85rem;color:var(--text2);line-height:1.4;font-weight:400}
+
+/* CONTACT */
+#contact{background:var(--bg);text-align:center}
+.contact-wrap{max-width:640px;margin:0 auto}
+.contact-wrap p{color:var(--text2);font-size:1.05rem;margin-bottom:3rem;font-weight:300;line-height:1.8}
+.clinks{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.clink{display:flex;align-items:center;gap:.6rem;color:var(--text2);text-decoration:none;font-size:.88rem;font-weight:500;padding:.85rem 1.6rem;border:1px solid var(--border);border-radius:12px;background:var(--card);transition:all .2s}
+.clink:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.clink svg{width:17px;height:17px;flex-shrink:0}
+
+footer{text-align:center;padding:2.5rem;color:var(--text3);font-size:.78rem;border-top:1px solid var(--border);font-family:'DM Mono',monospace;letter-spacing:.05em}
+
+/* SCROLL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+@media(max-width:960px){
+  .hero-inner,.about-layout,.edu-layout{grid-template-columns:1fr}
+  .stat-panel{display:none}
+  .nav-links,.nav-btns .btn-resume{display:none}
+  .resume-banner{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#home">CN<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-btns">
+      <a class="btn-resume" href="Charith_Nukala_Resume.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Resume
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-noise"></div>
+  <div class="hero-glow1"></div>
+  <div class="hero-glow2"></div>
+  <div class="dot-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        <span class="badge-text">Open to new opportunities</span>
+      </div>
+      <h1 class="hero-name">
+        <span class="line1">Charith</span>
+        <span class="line2">Nukala</span>
+      </h1>
+      <p class="hero-desc">
+        Data Analyst with <strong>4+ years of experience</strong> turning complex enterprise data into decisions that move the bottom line — across finance, insurance &amp; healthcare.
+      </p>
+      <div class="hero-pills">
+        <span class="hero-pill">SQL</span>
+        <span class="hero-pill">Python</span>
+        <span class="hero-pill">Power BI</span>
+        <span class="hero-pill">Tableau</span>
+        <span class="hero-pill">Snowflake</span>
+        <span class="hero-pill">Databricks</span>
+        <span class="hero-pill">AWS</span>
+        <span class="hero-pill">scikit-learn</span>
+        <span class="hero-pill">Apache Airflow</span>
+        <span class="hero-pill">A/B Testing</span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-grad" href="#experience">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          View Experience
+        </a>
+        <a class="btn-ghost" href="Charith_Nukala_Resume.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/charith-nukala-ba07bb3b9" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <div class="stat-panel reveal">
+      <div class="stat-grid">
+        <div class="stat-box wide">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Years of Experience</div>
+          <div class="stat-sub">Finance · Insurance · Healthcare</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">$425K+</div>
+          <div class="stat-label">Annual savings generated</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">35%</div>
+          <div class="stat-label">Query time reduced</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">30%</div>
+          <div class="stat-label">Reporting efficiency</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">89%</div>
+          <div class="stat-label">ML model accuracy</div>
+        </div>
+      </div>
+      <div class="stat-panel-footer">
+        <span>● Currently at State Farm</span>&nbsp;· Irving, TX
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sec-eyebrow">About me</div>
+    <h2 class="sec-title">The analyst behind<br/>the <em>numbers</em></h2>
+    <div class="about-layout reveal">
+      <div class="about-body">
+        <p>I'm a Data Analyst with <strong>4+ years</strong> of experience building analytics infrastructure that helps enterprises make faster, smarter decisions. My work spans the full data stack — scalable Snowflake and Databricks models, automated Python pipelines, and Power BI dashboards that executives actually use.</p>
+        <p>At <strong>State Farm</strong>, I support multi-million-dollar operational workflows, contributing to over <span class="metric">$200K</span> in annual cost savings, a <span class="metric">35%</span> reduction in query execution time, and a <span class="metric">30%</span> improvement in reporting efficiency.</p>
+        <p>Before that at <strong>TCS</strong>, I built HIPAA-compliant healthcare data platforms across AWS, Azure, and GCP — designing ETL pipelines with Airflow &amp; Spark and delivering BI solutions that drove <span class="metric">$150K+</span> in operational savings.</p>
+        <p>I'm most energized at the intersection of <strong>messy data and real business impact</strong> — running A/B tests, training forecasting models, or helping a stakeholder finally understand what their data is actually saying.</p>
+      </div>
+      <div class="about-cards">
+        <div class="acard reveal reveal-delay-1">
+          <div class="acard-icon">📊</div>
+          <div><div class="acard-title">Enterprise Analytics</div><div class="acard-desc">Snowflake, Databricks, AWS — production-grade pipelines supporting $5M+ budgets</div></div>
+        </div>
+        <div class="acard reveal reveal-delay-2">
+          <div class="acard-icon">🤖</div>
+          <div><div class="acard-title">Predictive Modeling</div><div class="acard-desc">scikit-learn, XGBoost, SHAP — models that explain, not just predict</div></div>
+        </div>
+        <div class="acard reveal reveal-delay-3">
+          <div class="acard-icon">🧪</div>
+          <div><div class="acard-title">Statistical Experimentation</div><div class="acard-desc">A/B testing, hypothesis testing, regression analysis at scale</div></div>
+        </div>
+        <div class="acard reveal">
+          <div class="acard-icon">📈</div>
+          <div><div class="acard-title">BI & Visualization</div><div class="acard-desc">Power BI, Tableau, Looker — dashboards that drive decisions</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-eyebrow">Work history</div>
+    <h2 class="sec-title">Professional <em>Experience</em></h2>
+
+    <!-- Resume download banner -->
+    <div class="resume-banner reveal">
+      <div class="resume-banner-text">
+        <h3>View My Full Resume</h3>
+        <p>Download the PDF for the complete version of my experience and skills.</p>
+      </div>
+      <a class="btn-dl" href="Charith_Nukala_Resume.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume (PDF)
+      </a>
+    </div>
+
+    <div class="exp-timeline">
+      <div class="exp-card reveal">
+        <div class="exp-head">
+          <div>
+            <div class="exp-co">State Farm</div>
+            <div class="exp-role-badge">Data Analyst</div>
+          </div>
+          <div class="exp-dates">
+            <span class="exp-period">OCT 2023 – PRESENT</span>
+            <span class="exp-place">Irving, TX</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Designed scalable insurance data models in Snowflake and Databricks using advanced SQL (CTEs, window functions, partitioning), improving operational efficiency by <strong>22%</strong> across multi-million-dollar enterprise workflows.</li>
+          <li>Automated multi-source reporting workflows using Python (Pandas, NumPy) and Excel (VBA) integrated with AWS S3 pipelines, reducing manual effort by <strong>12+ hrs/week</strong> and saving <strong>~$75K annually</strong>.</li>
+          <li>Conducted exploratory analysis and A/B testing (regression, hypothesis testing) to identify inefficiencies, reducing operational costs by <strong>18%</strong> and generating over <strong>$200K in annual savings</strong>.</li>
+          <li>Built dynamic KPI dashboards in Power BI and Tableau integrated with Snowflake and AWS, improving executive reporting efficiency and decision-making speed by <strong>30%</strong>.</li>
+          <li>Developed predictive forecasting models with Python and scikit-learn, increasing prediction accuracy by <strong>25%</strong> for business units managing budgets exceeding $5M.</li>
+          <li>Optimized complex SQL queries in Snowflake and Databricks production environments, reducing average query execution time by <strong>35%</strong>.</li>
+          <li>Implemented data quality validation and anomaly detection frameworks aligned with CI/CD practices, improving data integrity by <strong>20%</strong>.</li>
+          <li>Led Agile/Scrum sprint planning with product, finance, and operations teams via Jira, accelerating decision-making speed by <strong>25%</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="exp-gap"></div>
+
+      <div class="exp-card reveal">
+        <div class="exp-head">
+          <div>
+            <div class="exp-co">Tata Consultancy Services</div>
+            <div class="exp-role-badge">Data Analyst</div>
+          </div>
+          <div class="exp-dates">
+            <span class="exp-period">JUL 2021 – AUG 2023</span>
+            <span class="exp-place">Hyderabad, India</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Analyzed and transformed large-scale healthcare datasets using advanced SQL across AWS (S3, Redshift, Glue), Azure, and GCP (BigQuery), improving reporting accuracy by <strong>25%</strong>.</li>
+          <li>Designed interactive BI dashboards in Power BI, Tableau, and SAS with Parquet-optimized data integration, improving business efficiency by <strong>20%</strong>.</li>
+          <li>Built automated ETL pipelines using Python, Apache Airflow, and Spark, reducing manual effort by <strong>30%</strong> and generating <strong>~$60K in annual savings</strong>.</li>
+          <li>Applied statistical forecasting models to identify inefficiencies, contributing to <strong>$150K in annual cost reductions</strong>.</li>
+          <li>Optimized SQL reporting logic with Git/GitHub, reducing turnaround time by <strong>30%</strong> across analytics pipelines.</li>
+          <li>Maintained HIPAA-aligned data governance across cloud environments with access controls and audit logging.</li>
+          <li>Collaborated with engineers and clinical stakeholders in Agile/Jira environments, improving decision velocity by <strong>20%</strong>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-eyebrow">Technical stack</div>
+    <h2 class="sec-title">Skills & <em>Technologies</em></h2>
+    <div class="skills-wrap reveal">
+      <div class="scat">
+        <div class="scat-head"><div class="scat-icon">📊</div><div class="scat-name">Analysis & Viz</div></div>
+        <div class="pills"><span class="p star">SQL</span><span class="p star">Python</span><span class="p star">Power BI</span><span class="p star">Tableau</span><span class="p">Pandas</span><span class="p">NumPy</span><span class="p">Excel</span><span class="p">Looker</span><span class="p">KPI Dashboards</span></div>
+      </div>
+      <div class="scat">
+        <div class="scat-head"><div class="scat-icon">⚙️</div><div class="scat-name">Data Engineering</div></div>
+        <div class="pills"><span class="p star">Snowflake</span><span class="p star">Databricks</span><span class="p star">Apache Airflow</span><span class="p">Spark</span><span class="p">Hadoop</span><span class="p">ETL Pipelines</span><span class="p">Parquet</span></div>
+      </div>
+      <div class="scat">
+        <div class="scat-head"><div class="scat-icon">☁️</div><div class="scat-name">Cloud Platforms</div></div>
+        <div class="pills"><span class="p star">AWS</span><span class="p">S3</span><span class="p">Redshift</span><span class="p">Glue</span><span class="p">Lambda</span><span class="p">Athena</span><span class="p">Azure</span><span class="p">GCP</span><span class="p">BigQuery</span><span class="p">Kubernetes</span></div>
+      </div>
+      <div class="scat">
+        <div class="scat-head"><div class="scat-icon">🧮</div><div class="scat-name">Statistics & ML</div></div>
+        <div class="pills"><span class="p star">A/B Testing</span><span class="p star">scikit-learn</span><span class="p">Regression</span><span class="p">Hypothesis Testing</span><span class="p">Time Series</span><span class="p">Predictive Modeling</span><span class="p">SAS</span></div>
+      </div>
+      <div class="scat">
+        <div class="scat-head"><div class="scat-icon">🛠</div><div class="scat-name">Tools & DevOps</div></div>
+        <div class="pills"><span class="p">Git/GitHub</span><span class="p">CI/CD</span><span class="p">JIRA</span><span class="p">Confluence</span><span class="p">Jupyter</span><span class="p">VS Code</span><span class="p">Postman</span><span class="p">Salesforce</span></div>
+      </div>
+      <div class="scat">
+        <div class="scat-head"><div class="scat-icon">💻</div><div class="scat-name">Programming</div></div>
+        <div class="pills"><span class="p star">Python</span><span class="p star">SQL</span><span class="p">R</span><span class="p">JavaScript</span><span class="p">Shell Scripting</span><span class="p">MATLAB</span><span class="p">Java</span><span class="p">TypeScript</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-eyebrow">Featured work</div>
+    <h2 class="sec-title">Personal <em>Projects</em></h2>
+    <div class="proj-wrap">
+      <div class="pcard reveal">
+        <div class="pcard-glow"></div>
+        <div class="pcard-top">
+          <div class="pcard-name">Customer Churn Prediction<br/>&amp; Analytics Platform</div>
+          <div class="pcard-badge">Machine Learning</div>
+        </div>
+        <div class="pcard-stack">Python · PostgreSQL · XGBoost · scikit-learn · AWS (S3, Lambda, Glue) · Power BI · SHAP</div>
+        <div class="pcard-metrics">
+          <div class="pm"><div class="pm-num">89%</div><div class="pm-label">Model Accuracy</div></div>
+          <div class="pm"><div class="pm-num">0.93</div><div class="pm-label">AUC-ROC Score</div></div>
+          <div class="pm"><div class="pm-num">40%</div><div class="pm-label">Pipeline Speed ↑</div></div>
+          <div class="pm"><div class="pm-num">17%</div><div class="pm-label">Churn Reduction</div></div>
+        </div>
+        <ul class="pcard-bullets">
+          <li>Built end-to-end churn prediction pipeline using XGBoost and scikit-learn, engineering 40+ features from 500K+ customer records to achieve <strong>89% accuracy</strong> with an AUC-ROC of 0.93 across cross-validated test sets.</li>
+          <li>Automated ETL workflows on AWS (S3, Lambda, Glue) to ingest and transform customer behavioral data, reducing pipeline processing time by <strong>40%</strong> while ensuring consistent data quality.</li>
+          <li>Designed real-time Power BI dashboard tracking 12+ KPIs (churn probability, CLV, retention rate), enabling stakeholders to target retention strategies projecting a <strong>17% reduction in churn</strong>.</li>
+          <li>Applied SHAP analysis for model interpretability, quantifying feature contributions and surfacing the top 5 churn drivers to deliver prioritized recommendations to product and customer success leadership.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="sec-eyebrow">Background</div>
+    <h2 class="sec-title">Education &amp; <em>Certifications</em></h2>
+    <div class="edu-layout reveal">
+      <div class="edu-card">
+        <div class="edu-label">Master's Degree</div>
+        <div class="edu-deg">Master of Science in Information Systems</div>
+        <div class="edu-uni">Cleveland State University</div>
+        <div class="edu-info">Cleveland, OH &nbsp;·&nbsp; GPA: 3.44</div>
+      </div>
+      <div>
+        <div class="certs-head">Certifications</div>
+        <div class="cert-cards">
+          <div class="cert-card"><div class="cert-ico">🐍</div><div class="cert-name">Python for Data Analysis (NumPy, Pandas)</div></div>
+          <div class="cert-card"><div class="cert-ico">🤖</div><div class="cert-name">Generative AI &amp; Agentic AI Fundamentals</div></div>
+          <div class="cert-card"><div class="cert-ico">📊</div><div class="cert-name">Microsoft Excel &amp; Power BI for Data Analysis and Visualization</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap">
+      <div class="sec-eyebrow" style="justify-content:center">Get in touch</div>
+      <h2 class="sec-title" style="margin-bottom:1rem">Let's work <em>together</em></h2>
+      <p>Open to Data Analyst, Senior Data Analyst, and Analytics Engineer opportunities in the United States. Always happy to connect.</p>
+      <div class="clinks">
+        <a class="clink" href="mailto:charithnukala1@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          charithnukala1@gmail.com
+        </a>
+        <a class="clink" href="https://www.linkedin.com/in/charith-nukala-ba07bb3b9" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn Profile
+        </a>
+        <a class="clink" href="Charith_Nukala_Resume.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Resume
+        </a>
+        <a class="clink" href="tel:+19494394678">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.57 12a19.79 19.79 0 0 1-3-8.59A2 2 0 0 1 3.41 1.5h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.18a16 16 0 0 0 6 6l.75-.76a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/></svg>
+          +1 (949) 439-4678
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 Charith Nukala · Data Analyst · United States</footer>
+
+<script>
+// Sticky nav
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
